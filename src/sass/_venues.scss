@@ -1,0 +1,54 @@
+aside.react-venues {
+    width: 15%;
+    background: $timetable-row-header-background;
+    border-right: 1px solid transparent;
+    color: $timetable-row-header-color;
+    box-sizing: inherit;
+    float: left;
+    margin-top: $timetable-hour-row-height;
+    padding: 0 !important;
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & > li {
+            border-bottom: 1px solid white;
+            height: $timetable-hour-row-height;
+            font-size: .8em;
+            padding: 0 15px;
+            line-height: $timetable-hour-row-height;
+            position: relative;
+
+            & > span {
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                @include ellipsis();
+
+                &:active {
+                    position: absolute;
+                    overflow: visible;
+                    z-index: 4;
+                    background: $timetable-row-header-background;
+                    border-right: 1px solid transparent;
+                    color: $timetable-row-header-color;
+                    max-width: none;
+                    left: 0;
+
+                    span {
+                        padding: 0 15px;
+                    }
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .row-heading {
+        @include ellipsis()
+    }
+}

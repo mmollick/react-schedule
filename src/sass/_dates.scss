@@ -1,0 +1,52 @@
+section.react-dates {
+    color: $timetable-row-header-color;
+    background: $timetable-row-header-background;
+    overflow-x: auto;
+    text-align: right;
+    white-space: nowrap;
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+
+        & > li {
+            display: inline-block;
+            text-align: center;
+
+            a {
+                color: lighten($timetable-row-header-color, 40%);
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+
+                &:hover {
+                    background: darken($timetable-row-header-background, 10%);
+                    color: lighten($timetable-row-header-color, 20%);
+                }
+            }
+
+            &.active {
+                background: #ffffff;
+                padding: 10px;
+            }
+
+            .weekday {
+                display: block;
+                font-family: serif;
+                font-style: italic;
+                letter-spacing: 1px;
+            }
+
+            .date {
+                font-size: 26px;
+                letter-spacing: 1px;
+                position: relative;
+
+                & > span {
+                    font-size: 14px;
+                    vertical-align: super;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+/*
+ * Default settings
+ */
+
+// dimensions
+$timetable-hour-column-width: 96px !default;
+$timetable-hour-row-height: 46px !default;
+$timetable-heading-height: 30px !default;
+$timetable-breakpoint: "only screen and (max-width: 960px)" !default;
+// colors & decoration
+$timetable-grid-color: #e5e5e5 !default;
+$timetable-grid: 1px solid $timetable-grid-color !default;
+$timetable-row-header-padding: 15px !default;
+$timetable-row-header-color: #444444 !default;
+$timetable-row-header-background: #efefef !default;
+$timetable-legend-row-separator: 1px solid white !default;
+$timetable-entry-row-separator: none !default;
+$timetable-row-header-gap: 5px solid transparent !default;
+$timetable-row-uneven-color: #fdfdfd !default;
+$timetable-row-even-color: #f4f4f4 !default;
+$timetable-entry-color: #ec6a5e !default;
+$timetable-entry-color-hover: darken($timetable-entry-color, 10%) !default;
+$timetable-entry-border: 1px solid darken($timetable-entry-color, 15%) !default;
+$timetable-entry-padding: 10px !default;
+
+/*
+ * Mixins
+ */
+@mixin valign-middle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin valign-parent {
+    transform-style: preserve-3d;
+}
+
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
+
+@mixin ellipsis($width: 100%) {
+    display: inline-block;
+    max-width: $width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+/*
+ * Timetable
+ */
+
+#react-timetable {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    @include clearfix();
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    aside, section.react-events {
+        float: left
+    }
+
+    aside li, .time li {
+        height: $timetable-hour-row-height;
+    }
+
+    @import 'venues';
+    @import 'dates';
+    @import 'timeline';
+    @import 'event';
+
+    @media #{$timetable-breakpoint} {
+        aside.react-venues {
+            width: 20%;
+        }
+
+        section.react-events {
+            width: 80%;
+        }
+    }
+}

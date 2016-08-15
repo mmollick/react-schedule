@@ -1,0 +1,38 @@
+{
+  "venues": [
+    {
+      "title": "Venue #1",
+      "events": [
+        {
+          "title": "Event #1",
+          "description": "Nam et tellus fermentum, sodales purus ac, interdum est. Ut lacinia ac eros quis lacinia. Sed pharetra in lacus ut euismod. Etiam id mi ut ante lobortis viverra. Mauris maximus nisl nec augue egestas, in facilisis turpis interdum. Donec a accumsan leo. Nam vitae interdum ante. Nullam id mauris eleifend risus congue finibus id id eros.",
+          "start": 900,
+          "length": 90
+        },
+        {
+          "title": "Event #2",
+          "description": "Nam et tellus fermentum, sodales purus ac, interdum est. Ut lacinia ac eros quis lacinia. Sed pharetra in lacus ut euismod. Etiam id mi ut ante lobortis viverra. Mauris maximus nisl nec augue egestas, in facilisis turpis interdum. Donec a accumsan leo. Nam vitae interdum ante. Nullam id mauris eleifend risus congue finibus id id eros.",
+          "start": 1200,
+          "length": 90
+        }
+      ]
+    },
+    {
+      "title": "Venue #2",
+      "events": [
+        {
+          "title": "Event #1",
+          "description": "Nam et tellus fermentum, sodales purus ac, interdum est. Ut lacinia ac eros quis lacinia. Sed pharetra in lacus ut euismod. Etiam id mi ut ante lobortis viverra. Mauris maximus nisl nec augue egestas, in facilisis turpis interdum. Donec a accumsan leo. Nam vitae interdum ante. Nullam id mauris eleifend risus congue finibus id id eros.",
+          "start": 1000,
+          "length": 90
+        },
+        {
+          "title": "Event #2",
+          "description": "Nam et tellus fermentum, sodales purus ac, interdum est. Ut lacinia ac eros quis lacinia. Sed pharetra in lacus ut euismod. Etiam id mi ut ante lobortis viverra. Mauris maximus nisl nec augue egestas, in facilisis turpis interdum. Donec a accumsan leo. Nam vitae interdum ante. Nullam id mauris eleifend risus congue finibus id id eros.",
+          "start": 1400,
+          "length": 90
+        }
+      ]
+    }
+  ]
+}

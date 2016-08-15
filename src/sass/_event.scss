@@ -1,0 +1,86 @@
+.react-event {
+    &:before {
+        content: "";
+        display: none;
+        background: rgba(0,0,0,.7);
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 10;
+    }
+
+    & > div {
+        background: #fefefe;
+        color: #444;
+        //border: #eee solid 1px;
+        font-size: .9em;
+        left: 50%;
+        max-width: 400px;
+        padding: 25px;
+        position: fixed;
+        top: -100%;
+        transform: translate(-50%, -500%);
+        transition: transform 0.3s ease-out;
+        width: 100%;
+        z-index: 1000;
+
+        .close {
+            color: lighten($timetable-row-header-color, 10%);
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            transition: color 0.1s ease-out;
+
+            &:hover {
+                color: lighten($timetable-row-header-color, 60%);
+            }
+        }
+
+        h2.event-title {
+            color: $timetable-entry-color;
+            margin: 0 0 5px;
+            font-weight: 700;
+        }
+
+        div.event-content {
+            color: lighten($timetable-row-header-color, 10%);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        span.event-meta {
+            color:  lighten($timetable-row-header-color, 40%);
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        div.event-image {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 200px;
+            margin-bottom: 25px;
+
+            &:after {
+                content: '';
+                display: block;
+                background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 120%);
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    &.active {
+        // Active animate in modal
+        &:before {
+            display: block;
+        }
+
+        & > div {
+            transform: translate(-50%, 0);
+            top: 10%;
+        }
+    }
+}

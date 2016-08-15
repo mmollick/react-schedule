@@ -1,0 +1,124 @@
+section.react-events {
+    width: 85%;
+    padding: 0 !important;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    .time {
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    header {
+        height: $timetable-hour-row-height;
+        transform-style: preserve-3d;
+        @include clearfix();
+        font-size: 0;
+
+        li {
+            display: inline-block;
+            font-size: 1rem;
+            overflow: visible;
+            width: 0;
+            line-height: $timetable-hour-row-height;
+            display: inline-block;
+            position: relative;
+
+            &:not(:last-of-type) {
+                width: $timetable-hour-column-width;
+            }
+
+            .time-label {
+                display: block;
+                position: absolute;
+                left: 0;
+                font-size: .8em;
+            }
+
+            &:not(:first-of-type) .time-label {
+                transform: translateX(-50%);
+            }
+
+            &:last-of-type .time-label {
+                transform: translateX(-100%);
+            }
+        }
+    }
+
+    ul.room-timeline {
+        border-left: none;
+        position: relative;
+        overflow: hidden;
+
+        li {
+            position: relative;
+            background-color: $timetable-row-even-color;
+
+            &:nth-of-type(odd) {
+                background-color: $timetable-row-uneven-color;
+            }
+
+            &:first-of-type {
+                border-top: $timetable-grid;
+            }
+
+            &:last-of-type {
+                border-bottom: $timetable-grid;
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: $timetable-entry-row-separator;
+            }
+
+            &:first-child .time-entry {
+                height: $timetable-hour-row-height - 2px;
+            }
+
+            &::after, &::before {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            &::before {
+                background-image: linear-gradient(to right, $timetable-grid-color 1px, transparent 1px);
+                background-size: $timetable-hour-column-width / 4 auto;
+            }
+
+            &::after {
+                background-image: linear-gradient(to right, $timetable-grid-color, $timetable-grid-color 1px, $timetable-row-even-color 1px, $timetable-row-even-color 2px, $timetable-grid-color 2px, $timetable-grid-color 3px, transparent 3px, transparent);
+                background-size: $timetable-hour-column-width auto;
+                background-position: -2px 0;
+            }
+        }
+    }
+
+    .time-entry {
+        background-color: $timetable-entry-color;
+        transition: 200ms background-color;
+        height: $timetable-hour-row-height - 1px;
+        display: block;
+        position: absolute;
+        z-index: 2;
+        padding: 0 $timetable-entry-padding;
+        white-space: normal;
+        overflow: hidden;
+        color: white;
+        border: $timetable-entry-border;
+        @include valign-parent();
+        @include ellipsis();
+
+        small {
+            @include valign-middle();
+            display: block;
+        }
+
+        &:hover {
+            background-color: $timetable-entry-color-hover;
+        }
+    }
+}
