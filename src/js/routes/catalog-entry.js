@@ -11,6 +11,13 @@ export default class CatalogEntry extends React.Component {
                 return <span className="event-meta-sub" key={i}><strong>{field.title}:</strong> {field.value}</span>
         }) : <span />;
 
+        let color = [];
+        let button = [];
+        if(data.color !== '') {
+            color['color'] = data.color;
+            button['background'] = data.color;
+        }
+
         return (
             <li >
                 <div>
@@ -20,13 +27,13 @@ export default class CatalogEntry extends React.Component {
                             : <div className="event-poster"><img src="http://placehold.it/640x360" /></div>
                     }
                     <div className="event-description">
-                        <h2 className="event-title">{data.title}</h2>
+                        <h2 className="event-title" style={color}>{data.title}</h2>
                         <div dangerouslySetInnerHTML={{__html: data.description}}></div>
                     </div>
                     <div className="event-details">
                         {
                             (data.button && data.button.url) ?
-                                <a href={data.button.url} className="event-button" target="_blank">{data.button.title}</a> : <span/>
+                                <a href={data.button.url} className="event-button" style={button} target="_blank">{data.button.title}</a> : <span/>
                         }
                         <span className="event-meta">{moment(params.day + ' ' + data.start).format('lll')}</span>
                         {fields}

@@ -159,14 +159,19 @@ class App extends React.Component {
                         const minutes = (event.start.replace(':', '') / 100 - hours) / 0.6;
 
                         // Calculate the position and length for the event's dev
-                        let pos = {
+                        let style = {
                             left: (this.pixelsPerHour * (hours - this.earliest + minutes)) + 'px',
                             width: (this.pixelsPerHour * (event.length / 60)) + 'px'
                         };
 
+                        if(event.color !== '') {
+                            style['background'] = event.color;
+                            style['borderColor'] = event.color;
+                        }
+
                         return (
                             <Link key={i} to={'/' + moment(data.date).format('YYYY-MM-DD') + '/venue/' + slugify(venue.title) + '/event/' + slugify(event.title) + '/' + event.start}>
-                                <span key={i} title={event.title} style={pos} className="time-entry">
+                                <span key={i} title={event.title} style={style} className="time-entry">
                                     <small>{event.title}</small>
                                 </span>
                             </Link>

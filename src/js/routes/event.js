@@ -18,6 +18,13 @@ export default class Event extends React.Component {
                 return <span className="event-meta-sub" key={i}><strong>{field.title}:</strong> {field.value}</span>
         }) : <span />;
 
+        let color = [];
+        let button = [];
+        if(data.color !== '') {
+            color['color'] = data.color;
+            button['background'] = data.color;
+        }
+
         return (
             <div className={'react-event' + ((!data) ? '' : ' active')} onClick={(e) => this.close(e)}>
                 <div onClick={(e) => {e.stopPropagation()}}>
@@ -29,7 +36,7 @@ export default class Event extends React.Component {
                                     (data.poster) ?
                                         <div className="event-poster" dangerouslySetInnerHTML={{__html: data.poster}}></div> : <span/>
                                 }
-                                <h2 className="event-title">{data.title}</h2>
+                                <h2 className="event-title" style={color}>{data.title}</h2>
                                 <span className="event-meta">{moment(params.day + ' ' + data.start).format('lll')}</span>
                                 <div className="event-content" dangerouslySetInnerHTML={{__html: data.description}}></div>
                                 <div>
@@ -37,7 +44,7 @@ export default class Event extends React.Component {
                                 </div>
                                 {
                                     (data.button && data.button.url) ?
-                                        <a href={data.button.url} className="event-button" target="_blank">{data.button.title}</a> : <span/>
+                                        <a href={data.button.url} className="event-button" style={button} target="_blank">{data.button.title}</a> : <span/>
                                 }
                             </div>
                     }
