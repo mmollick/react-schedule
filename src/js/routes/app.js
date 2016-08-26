@@ -176,7 +176,11 @@ class App extends React.Component {
         });
     }
 
-    getEventsList() {
+    /**
+     * Creates the events list
+     * @returns {XML}
+     */
+    getEventsCatalog() {
         const {params} = this.props;
         const data = this.getDaysData();
         let arr = [];
@@ -264,7 +268,7 @@ class App extends React.Component {
                     <Event data={this.getEvent()} {...this.props} />
                 </div>
                 <div className="react-catalog">
-                    {this.getEventsList()}
+                    {this.getEventsCatalog()}
                 </div>
             </div>
         );
