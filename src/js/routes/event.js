@@ -25,13 +25,20 @@ export default class Event extends React.Component {
                         (!data) ? <span /> :
                             <div>
                                 <span className="close" onClick={(e) => this.close(e)}>&times;</span>
-                                <div className="event-poster" dangerouslySetInnerHTML={{__html: data.poster}}></div>
+                                {
+                                    (data.poster) ?
+                                        <div className="event-poster" dangerouslySetInnerHTML={{__html: data.poster}}></div> : <span/>
+                                }
                                 <h2 className="event-title">{data.title}</h2>
                                 <span className="event-meta">{moment(params.day + ' ' + data.start).format('lll')}</span>
-                                <div className="event-content">{data.description}</div>
+                                <div className="event-content" dangerouslySetInnerHTML={{__html: data.description}}></div>
                                 <div>
                                     {fields}
                                 </div>
+                                {
+                                    (data.button && data.button.url) ?
+                                        <a href={data.button.url} className="event-button" target="_blank">{data.button.title}</a> : <span/>
+                                }
                             </div>
                     }
                 </div>

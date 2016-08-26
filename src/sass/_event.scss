@@ -75,6 +75,19 @@
                 max-width: 100%;
             }
         }
+
+        button.event-button, a.event-button {
+            background: $timetable-entry-color;
+            color: white;
+            float: right;
+            padding: 12px 18px;
+            margin-top: 15px;
+            text-decoration: none;
+
+            &:hover {
+                background: $timetable-entry-color-hover;
+            }
+        }
     }
 
     &.active {
