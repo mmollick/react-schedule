@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router';
 import { slugify } from '../index';
 import Event from './event';
 import CatalogEntry from './catalog-entry';
+import Pagination from './pagination';
 
 class App extends React.Component {
 
@@ -183,6 +184,10 @@ class App extends React.Component {
     getEventsCatalog() {
         const {params} = this.props;
         const data = this.getDaysData();
+
+        const perPage = 5;
+        const page = params.page || 1;
+
         let arr = [];
         data.venues.forEach((venue, i) => {
             venue.events.forEach((data, i) => {
@@ -197,10 +202,16 @@ class App extends React.Component {
             return a[1];
         });
 
+        const totalPages = Math.ceil(arr.length / perPage);
+        const cursor = ((page - 1) * perPage);
+
         return (
-            <ul>
-                {arr}
-            </ul>
+            <div>
+                <ul>
+                    {arr.slice(cursor, cursor + perPage)}
+                </ul>
+                <Pagination route={'/' + params.day} visibleRange={5} totalPages={totalPages} currentPage={page} />
+            </div>
         );
     }
 
