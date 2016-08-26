@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Link, withRouter } from 'react-router';
 import { slugify } from '../index';
 import Event from './event';
+import CatalogEntry from './catalog-entry';
 
 class App extends React.Component {
 
@@ -175,6 +176,23 @@ class App extends React.Component {
         });
     }
 
+    getEventsList() {
+        const {params} = this.props;
+        const data = this.getDaysData();
+        let arr = [];
+        data.venues.forEach((venue, i) => {
+            venue.events.forEach((data, i) => {
+                arr.push(<CatalogEntry key={data.title + i} data={data} params={params} />);
+            })
+        });
+
+        return (
+            <ul>
+                {arr}
+            </ul>
+        );
+    }
+
     /**
      * Grabs the specified event (if specified); Will redirect to the specified
      * date if no event was found with the same venue/title/start
@@ -217,25 +235,30 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {this.getDateSelection()}
-                <aside className="react-venues">
-                    <ul>
-                        {this.getVenues()}
-                    </ul>
-                </aside>
-                <section className="react-events">
-                    <div className="time">
-                        <header>
-                            <ul>
-                                {this.getTimeframe()}
-                            </ul>
-                        </header>
-                        <ul className="room-timeline">
-                            {this.getEvents()}
+                <div className="react-timeline clearfix">
+                    {this.getDateSelection()}
+                    <aside className="react-venues">
+                        <ul>
+                            {this.getVenues()}
                         </ul>
-                    </div>
-                </section>
-                <Event data={this.getEvent()} {...this.props} />
+                    </aside>
+                    <section className="react-events">
+                        <div className="time">
+                            <header>
+                                <ul>
+                                    {this.getTimeframe()}
+                                </ul>
+                            </header>
+                            <ul className="room-timeline">
+                                {this.getEvents()}
+                            </ul>
+                        </div>
+                    </section>
+                    <Event data={this.getEvent()} {...this.props} />
+                </div>
+                <div className="react-catalog">
+                    {this.getEventsList()}
+                </div>
             </div>
         );
 

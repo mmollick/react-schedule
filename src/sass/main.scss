@@ -7,6 +7,7 @@ $timetable-hour-column-width: 240px !default;
 $timetable-hour-row-height: 46px !default;
 $timetable-heading-height: 30px !default;
 $timetable-breakpoint: "only screen and (max-width: 960px)" !default;
+$timetable-sm-breakpoint: "only screen and (max-width: 640px)" !default;
 // colors & decoration
 $timetable-grid-color: #e5e5e5 !default;
 $timetable-grid: 1px solid $timetable-grid-color !default;
@@ -63,6 +64,10 @@ $timetable-entry-padding: 10px !default;
     box-sizing: border-box;
     @include clearfix();
 
+    .clearfix{
+        @include clearfix();
+    }
+
     *, *:before, *:after {
         box-sizing: inherit;
     }
@@ -74,7 +79,7 @@ $timetable-entry-padding: 10px !default;
     }
 
     aside, section.react-events {
-        float: left
+        float: left;
     }
 
     aside li, .time li {
@@ -85,6 +90,7 @@ $timetable-entry-padding: 10px !default;
     @import 'dates';
     @import 'timeline';
     @import 'event';
+    @import 'catalog';
 
     @media #{$timetable-breakpoint} {
         aside.react-venues {
@@ -93,6 +99,36 @@ $timetable-entry-padding: 10px !default;
 
         section.react-events {
             width: 80%;
+        }
+    }
+
+    @media #{$timetable-sm-breakpoint} {
+        .react-catalog {
+            ul {
+                padding: 0 15px;
+
+                & > li {
+                    & > div {
+                        @include clearfix();
+                        display: block;
+
+                        > div {
+                            display: block;
+                            width: 100% !important;
+                            padding: 0 !important;
+                            margin-top: 20px;
+                            float: none;
+                        }
+                    }
+
+                    div.event-poster {
+                        & iframe, & img {
+                            max-height: 100%;
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
 }
