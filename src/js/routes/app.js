@@ -210,7 +210,7 @@ class App extends React.Component {
                 <ul>
                     {arr.slice(cursor, cursor + perPage)}
                 </ul>
-                <Pagination route={'/' + params.day} visibleRange={5} totalPages={totalPages} currentPage={page} />
+                <Pagination route={'/' + params.day} visibleRange={5} totalPages={totalPages} currentPage={Number(page)} />
             </div>
         );
     }

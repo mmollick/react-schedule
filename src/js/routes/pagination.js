@@ -103,12 +103,12 @@ export default class Pagination extends React.Component {
         let nodes = this.getNodes(start, end, currentPage, totalPages);
 
         // No page numbers to display? return empty span
-        if(totalPages < 1)
+        if(totalPages < 2)
             return <span/>;
 
         return (
-            <nav>
-                <ul className="pagination">
+            <nav className="pagination">
+                <ul>
                     {nodes}
                 </ul>
             </nav>

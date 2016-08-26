@@ -91,6 +91,7 @@ $timetable-entry-padding: 10px !default;
     @import 'timeline';
     @import 'event';
     @import 'catalog';
+    @import 'pagination';
 
     @media #{$timetable-breakpoint} {
         aside.react-venues {
