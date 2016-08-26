@@ -182,8 +182,15 @@ class App extends React.Component {
         let arr = [];
         data.venues.forEach((venue, i) => {
             venue.events.forEach((data, i) => {
-                arr.push(<CatalogEntry key={data.title + i} data={data} params={params} />);
+                arr.push([data, <CatalogEntry key={data.title + i} data={data} params={params} />]);
             })
+        });
+
+        // Sort the events
+        arr = arr.sort((a, b) => {
+            return a[0].title.localeCompare(b[0].title);
+        }).map((a) => {
+            return a[1];
         });
 
         return (
