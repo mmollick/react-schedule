@@ -7,7 +7,7 @@ import Event from './event';
 class App extends React.Component {
 
     componentWillMount() {
-        this.pixelsPerHour = 96;
+        this.pixelsPerHour = 240;
         this.mountDay();
         this.getEvent();
     }

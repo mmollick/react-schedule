@@ -15,21 +15,19 @@ aside.react-venues {
 
         & > li {
             border-bottom: 1px solid white;
+            cursor: pointer;
             height: $timetable-hour-row-height;
             font-size: .8em;
             padding: 0 15px;
             line-height: $timetable-hour-row-height;
             position: relative;
 
-            & > span {
-                font-weight: 400;
-                letter-spacing: 0.1em;
-                @include ellipsis();
-
-                &:active {
+            &:hover, &:active {
+                & > span {
+                    box-shadow: rgba(0,0,0,.3) 2px 2px 15px;
                     position: absolute;
                     overflow: visible;
-                    z-index: 4;
+                    z-index: 10;
                     background: $timetable-row-header-background;
                     border-right: 1px solid transparent;
                     color: $timetable-row-header-color;
@@ -40,6 +38,12 @@ aside.react-venues {
                         padding: 0 15px;
                     }
                 }
+            }
+
+            & > span {
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                @include ellipsis();
             }
 
             &:last-child {
